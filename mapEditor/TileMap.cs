@@ -57,6 +57,26 @@ namespace mapEditor
         }
     }
 
+    // 新增：从给定的宽高构造一个空地图（默认用 '.' 填充）
+    public TileMap(int width, int height)
+    {
+        if (width <= 0 || height <= 0)
+            throw new ArgumentException("地图宽高必须为正整数。");
+
+        _width = width;
+        _height = height;
+        _mapData = new char[_height, _width];
+
+        // 全部填充为 '.' 表示空地
+        for (int r = 0; r < _height; r++)
+        {
+            for (int c = 0; c < _width; c++)
+            {
+                _mapData[r, c] = _emptyChar; // 即 '.'
+            }
+        }
+    }
+
     /// <summary>
     /// 返回第 row 行、第 col 列的瓦片字符
     /// </summary>

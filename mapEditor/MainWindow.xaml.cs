@@ -38,14 +38,24 @@ namespace mapEditor
 
         // 新增：用于控制画布的缩放变换
         private ScaleTransform _canvasScaleTransform = new ScaleTransform(1.0, 1.0);
+        private TranslateTransform _canvasTranslateTransform = new TranslateTransform(0, 0);
+        private TransformGroup _canvasTransformGroup = new TransformGroup();
+
+        // 新增：用于追踪鼠标中键的平移状态
+        private bool _isMiddleMouseDown = false;
+        private Point _lastMiddleMousePos;
 
         public MainWindow()
         {
             InitializeComponent();
             _tileMap = new TileMap("tileMap/Berlin_1_256.map");
             
-            // 新增：给 MapCanvas 添加缩放变换
-            MapCanvas.RenderTransform = _canvasScaleTransform;
+            // 将缩放和位移变换加入 TransformGroup
+            _canvasTransformGroup.Children.Add(_canvasScaleTransform);
+            _canvasTransformGroup.Children.Add(_canvasTranslateTransform);
+
+            // 将 TransformGroup 赋给画布
+            MapCanvas.RenderTransform = _canvasTransformGroup;
 
             DrawMap();
         }
@@ -302,6 +312,37 @@ namespace mapEditor
                 // 防止缩放过小
                 if (_canvasScaleTransform.ScaleX < 0.1) _canvasScaleTransform.ScaleX = 0.1;
                 if (_canvasScaleTransform.ScaleY < 0.1) _canvasScaleTransform.ScaleY = 0.1;
+            }
+        }
+
+        // 新增：在 File 菜单中 "New" 菜单项的点击事件
+        private void MenuItem_New_Click(object sender, RoutedEventArgs e)
+        {
+            // 弹出输入对话框，让用户输入地图宽、高
+            string widthInput = Microsoft.VisualBasic.Interaction.InputBox(
+                "请输入地图宽度：", 
+                "新建地图", 
+                "32" // 默认值，可按需修改
+            );
+
+            string heightInput = Microsoft.VisualBasic.Interaction.InputBox(
+                "请输入地图高度：", 
+                "新建地图", 
+                "32" // 默认值，可按需修改
+            );
+
+            if (int.TryParse(widthInput, out int mapWidth) && mapWidth > 0 &&
+                int.TryParse(heightInput, out int mapHeight) && mapHeight > 0)
+            {
+                // 使用用户输入的尺寸创建新的 TileMap
+                _tileMap = new TileMap(mapWidth, mapHeight);
+
+                // 绘制新地图
+                DrawMap();
+            }
+            else
+            {
+                MessageBox.Show("请输入有效的正整数宽度和高度。", "无效输入", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

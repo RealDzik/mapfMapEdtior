@@ -18,6 +18,7 @@
     <Grid>
         <Menu VerticalAlignment="Top">
             <MenuItem Header="File">
+                <MenuItem Header="New" Click="MenuItem_New_Click" />
                 <MenuItem Header="Open..." Click="MenuItem_Open_Click" />
                 <MenuItem Header="Save"   Click="MenuItem_Save_Click" />
                 <MenuItem Header="Save As..." Click="MenuItem_SaveAs_Click" />
