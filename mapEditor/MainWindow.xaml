@@ -16,7 +16,13 @@
         DragEnter="Window_DragEnter"
         Drop="Window_Drop">
     <Grid>
-        <Menu VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu VerticalAlignment="Top" Grid.Row="0">
             <MenuItem Header="File">
                 <MenuItem Header="New" Click="MenuItem_New_Click" />
                 <MenuItem Header="Open..." Click="MenuItem_Open_Click" />
@@ -28,6 +34,20 @@
             </MenuItem>
         </Menu>
 
-        <Canvas x:Name="MapCanvas" Margin="0,24,0,0" />
+        <Canvas x:Name="MapCanvas"
+                Margin="0,24,0,0" 
+                Grid.Row="1" />
+
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock x:Name="MapInfoText"
+                           Text="宽0, 高0" />
+            </StatusBarItem>
+
+            <StatusBarItem>
+                <TextBlock x:Name="MapPositionText"
+                           Text="行: -1, 列: -1" />
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>

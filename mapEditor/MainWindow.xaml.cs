@@ -89,6 +89,9 @@ namespace mapEditor
                     _tileRects[r, c] = rect;
                 }
             }
+
+            // 新增：在绘制完成后，更新状态栏文本
+            MapInfoText.Text = $"宽: {_tileMap.Width}, 高: {_tileMap.Height}";
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -111,6 +114,21 @@ namespace mapEditor
             if (_isMouseDown)
             {
                 SetTileUnderMouse(e);
+            }
+
+            // 新增：无论是否拖动，都更新状态栏中的鼠标行列信息
+            Point p = e.GetPosition(MapCanvas);
+            int row = (int)(p.Y / TileSize);
+            int col = (int)(p.X / TileSize);
+
+            // 简单边界检查，可根据需要自行处理
+            if (row < 0 || row >= _tileMap.Height || col < 0 || col >= _tileMap.Width)
+            {
+                MapPositionText.Text = $"行: -1, 列: -1";
+            }
+            else
+            {
+                MapPositionText.Text = $"行: {row}, 列: {col}";
             }
         }
 
