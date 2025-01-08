@@ -11,6 +11,7 @@
         MouseLeftButtonUp="Window_MouseLeftButtonUp"
         MouseMove="Window_MouseMove"
         MouseLeave="Window_MouseLeave"
+        MouseWheel="Window_MouseWheel"
         AllowDrop="True"
         DragEnter="Window_DragEnter"
         Drop="Window_Drop">

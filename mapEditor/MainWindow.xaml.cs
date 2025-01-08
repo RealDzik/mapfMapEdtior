@@ -36,10 +36,17 @@ namespace mapEditor
         // 新增：每次拖动可更改的格子数量，默认值为1
         private int _tilesToChange = 3;
 
+        // 新增：用于控制画布的缩放变换
+        private ScaleTransform _canvasScaleTransform = new ScaleTransform(1.0, 1.0);
+
         public MainWindow()
         {
             InitializeComponent();
             _tileMap = new TileMap("tileMap/Berlin_1_256.map");
+            
+            // 新增：给 MapCanvas 添加缩放变换
+            MapCanvas.RenderTransform = _canvasScaleTransform;
+
             DrawMap();
         }
 
@@ -270,6 +277,31 @@ namespace mapEditor
             else
             {
                 MessageBox.Show("请拖放 .map 文件", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        // 新增：鼠标滚轮事件，用于按住 Ctrl 时缩放画布
+        private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            // 如果按住 Ctrl 键，则进行缩放
+            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                double zoomStep = 0.1;  // 缩放步长，可根据需要调整
+
+                if (e.Delta > 0)
+                {
+                    _canvasScaleTransform.ScaleX += zoomStep;
+                    _canvasScaleTransform.ScaleY += zoomStep;
+                }
+                else
+                {
+                    _canvasScaleTransform.ScaleX -= zoomStep;
+                    _canvasScaleTransform.ScaleY -= zoomStep;
+                }
+
+                // 防止缩放过小
+                if (_canvasScaleTransform.ScaleX < 0.1) _canvasScaleTransform.ScaleX = 0.1;
+                if (_canvasScaleTransform.ScaleY < 0.1) _canvasScaleTransform.ScaleY = 0.1;
             }
         }
     }
