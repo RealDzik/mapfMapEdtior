@@ -1,0 +1,133 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="tileMap\Berlin_1_256.map" />
+    <None Remove="tileMap\Boston_0_256.map" />
+    <None Remove="tileMap\brc202d.map" />
+    <None Remove="tileMap\den312d.map" />
+    <None Remove="tileMap\den520d.map" />
+    <None Remove="tileMap\empty-16-16.map" />
+    <None Remove="tileMap\empty-32-32.map" />
+    <None Remove="tileMap\empty-48-48.map" />
+    <None Remove="tileMap\empty-8-8.map" />
+    <None Remove="tileMap\ht_chantry.map" />
+    <None Remove="tileMap\ht_mansion_n.map" />
+    <None Remove="tileMap\lak303d.map" />
+    <None Remove="tileMap\lt_gallowstemplar_n.map" />
+    <None Remove="tileMap\maze-128-128-10.map" />
+    <None Remove="tileMap\maze-128-128-2.map" />
+    <None Remove="tileMap\maze-32-32-2.map" />
+    <None Remove="tileMap\maze-32-32-4.map" />
+    <None Remove="tileMap\orz900d.map" />
+    <None Remove="tileMap\ost003d.map" />
+    <None Remove="tileMap\Paris_1_256.map" />
+    <None Remove="tileMap\random-32-32-10.map" />
+    <None Remove="tileMap\random-32-32-20.map" />
+    <None Remove="tileMap\random-64-64-10.map" />
+    <None Remove="tileMap\random-64-64-20.map" />
+    <None Remove="tileMap\room-32-32-4.map" />
+    <None Remove="tileMap\room-32-32-8.map" />
+    <None Remove="tileMap\room-64-64-16.map" />
+    <None Remove="tileMap\room-64-64-8.map" />
+    <None Remove="tileMap\w_woundedcoast.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="tileMap\Berlin_1_256.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\Boston_0_256.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\brc202d.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\den312d.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\den520d.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\empty-16-16.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\empty-32-32.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\empty-48-48.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\empty-8-8.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\ht_chantry.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\ht_mansion_n.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\lak303d.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\lt_gallowstemplar_n.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\maze-128-128-10.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\maze-128-128-2.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\maze-32-32-2.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\maze-32-32-4.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\orz900d.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\ost003d.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\Paris_1_256.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\random-32-32-10.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\random-32-32-20.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\random-64-64-10.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\random-64-64-20.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\room-32-32-4.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\room-32-32-8.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\room-64-64-16.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\room-64-64-8.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="tileMap\w_woundedcoast.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
