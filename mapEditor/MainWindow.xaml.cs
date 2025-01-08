@@ -45,6 +45,9 @@ namespace mapEditor
         private bool _isMiddleMouseDown = false;
         private Point _lastMiddleMousePos;
 
+        // 新增：保存当前已打开的地图文件路径
+        private string? _currentMapFilePath = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -225,6 +228,10 @@ namespace mapEditor
             {
                 // 根据用户选择的文件重新加载地图
                 _tileMap = new TileMap(openDialog.FileName);
+
+                // 新增：记录当前打开的文件路径
+                _currentMapFilePath = openDialog.FileName;
+
                 DrawMap();
             }
         }
@@ -232,8 +239,19 @@ namespace mapEditor
         // 新增：菜单栏 "Save"
         private void MenuItem_Save_Click(object sender, RoutedEventArgs e)
         {
-            // 如果你希望也给用户选择存储路径，可以改成 SaveFileDialog；若只想覆写当前路径，可保持现有逻辑
-            _tileMap.SaveMap("tileMap/Berlin_1_256.map");
+            // 新增：如果已通过文件打开或拖放，则直接保存到该文件
+            if (!string.IsNullOrEmpty(_currentMapFilePath))
+            {
+                _tileMap.SaveMap(_currentMapFilePath);
+            }
+            else
+            {
+                // 若没有已打开的文件路径，可提示或改为调用“Save As”
+                MessageBox.Show("当前地图未从文件打开，请使用 'Save As...' 指定保存位置。", 
+                                "无法保存",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+            }
         }
 
         // 新增：菜单栏 "Save As"
@@ -300,6 +318,10 @@ namespace mapEditor
             if (System.IO.Path.GetExtension(path).ToLower() == ".map")
             {
                 _tileMap = new TileMap(path);
+
+                // 新增：记录当前已拖放打开的文件路径
+                _currentMapFilePath = path;
+
                 DrawMap();
             }
             else
